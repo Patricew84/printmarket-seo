@@ -1,19 +1,18 @@
 import React from 'react';
 import { MapPin, Clock, Shield } from 'lucide-react';
-import { OfficeLocation } from '@/data/programmatic-seo';
+import { OfficeLocation, kgnOfficeLocations } from '@/data/programmatic-seo';
 
 interface LocalOfficesProps {
   offices: OfficeLocation[];
   location: string;
 }
 
-export const LocalOffices: React.FC<LocalOfficesProps> = ({ offices, location }) => {
+export const LocalOffices: React.FC<LocalOfficesProps> = ({ location }) => {
   // Import all offices to show all 4 branches
-  const { kgnOfficeLocations } = require('@/data/programmatic-seo');
   const allOffices = kgnOfficeLocations || [];
   
   // More precise logic for "close to you" - only show if location exactly matches serving areas
-  const getClosestOffice = (office: any) => {
+  const getClosestOffice = (office: OfficeLocation) => {
     return office.servingAreas.some((area: string) => 
       area.toLowerCase() === location.toLowerCase() ||
       office.area.toLowerCase() === location.toLowerCase()
@@ -77,11 +76,11 @@ export const LocalOffices: React.FC<LocalOfficesProps> = ({ offices, location })
         <div className="mt-12 text-center">
           <div className="bg-white rounded-lg shadow-lg p-8 inline-block">
             <h3 className="text-xl font-semibold text-gray-900 mb-4">
-              Can't visit? No problem!
+              Can&apos;t visit? No problem!
             </h3>
             <p className="text-gray-600 mb-6 max-w-lg">
               Get same-day pickup and delivery service across all areas in {location}. 
-              Order online and we'll handle the rest.
+              Order online and we&apos;ll handle the rest.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-green-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-green-700 transition-colors">
