@@ -95,7 +95,7 @@ export function SEOOptimizedPage({
 interface BreadcrumbProps {
   items: Array<{
     name: string;
-    url: string;
+    url: string | null;
     isLast?: boolean;
   }>;
 }
@@ -120,13 +120,19 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
             >
               {!item.isLast ? (
                 <>
-                  <a
-                    href={item.url}
-                    itemProp="item"
-                    className="text-gray-600 hover:text-primary-600 transition-colors"
-                  >
-                    <span itemProp="name">{item.name}</span>
-                  </a>
+                  {item.url ? (
+                    <a
+                      href={item.url}
+                      itemProp="item"
+                      className="text-gray-600 hover:text-primary-600 transition-colors"
+                    >
+                      <span itemProp="name">{item.name}</span>
+                    </a>
+                  ) : (
+                    <span className="text-gray-600" itemProp="name">
+                      {item.name}
+                    </span>
+                  )}
                   <meta itemProp="position" content={String(index + 1)} />
                   <svg
                     className="w-4 h-4 text-gray-400 mx-2"
@@ -146,7 +152,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
                     {item.name}
                   </span>
                   <meta itemProp="position" content={String(index + 1)} />
-                  <link itemProp="item" href={item.url} />
+                  {item.url && <link itemProp="item" href={item.url} />}
                 </>
               )}
             </li>

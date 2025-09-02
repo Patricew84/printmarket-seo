@@ -98,7 +98,7 @@ export function PrintingInAction({
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+      transition: { duration: 0.6, ease: "easeOut" as const },
     },
   };
 
@@ -140,7 +140,11 @@ export function PrintingInAction({
                 {videos.map((video, index) => (
                   <video
                     key={video.id}
-                    ref={(el) => (videoRefs.current[index] = el)}
+                    ref={(el) => {
+                      if (el) {
+                        videoRefs.current[index] = el;
+                      }
+                    }}
                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
                       activeVideo === index ? 'opacity-100' : 'opacity-0'
                     }`}

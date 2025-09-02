@@ -377,7 +377,7 @@ export default function ProgrammaticPageTemplate({
               ...customerType.benefits.slice(0, 2)
             ]}
             ctaText={`View ${service.displayName} Options`}
-            ctaAction="https://www.printmarket.in/quote_create.php"
+            ctaLink="https://www.printmarket.in/quote_create.php"
             imagePosition="right"
           />
         </section>
