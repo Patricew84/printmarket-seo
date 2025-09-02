@@ -117,7 +117,7 @@ export default function HomePage() {
                   <div>
                     <h4 className="font-medium text-gray-900 group-hover:text-blue-600">
                       {item.location}
-                    </div>
+                    </h4>
                     <p className="text-sm text-gray-600">{item.count}</p>
                   </div>
                   <svg className="w-4 h-4 text-gray-400 group-hover:text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
